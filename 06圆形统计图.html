@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canv {
+            margin: 0 auto;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv" width="500px" height="500px">ie9以下的浏览器不兼容</canvas>
+    <script>
+        let canv = document.querySelector('#canv')
+        let ctx = canv.getContext('2d')
+
+        let count = 0
+        let Deg = Math.PI / 180
+        ctx.lineWidth = 1
+        ctx.strokeStyle = 'red'
+        let timer = setInterval(() => {
+            count++
+            ctx.beginPath()
+            ctx.arc(250, 250, 100, (count - 1) * Deg - Math.PI / 2, count * Deg - Math.PI / 2, false)
+            ctx.stroke()
+            if (count === 360) {
+                clearInterval(timer)
+            }
+        }, 10)
+    </script>
+</body>
+
+</html>

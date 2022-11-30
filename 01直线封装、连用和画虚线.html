@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canv {
+            margin: 0 auto;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv" width="500px" height="500px">ie9以下的浏览器不兼容</canvas>
+    <script>
+        let canv = document.querySelector('#canv')
+        let ctx = canv.getContext('2d')
+            // 画直线
+            // drawLine(100, 100, 200, 100, 'red', 1)
+            // drawLine(200, 100, 200, 200, 'pink', 1)
+            // drawLine(200, 200, 100, 200, 'orange', 1)
+            // drawLine(100, 200, 100, 100, 'skyblue', 1)
+            // 画虚线
+        for (let i = 0; i < 20; i++) {
+            drawLine(100 + i * 10, 100, 105 + i * 10, 100, 'skyblue', 1)
+        }
+        for (let i = 0; i < 20; i++) {
+            drawLine(100 + i * 10, 100 + i * 10, 105 + i * 10, 105 + i * 10, 'skyblue', 1)
+        }
+        for (let i = 0; i < 20; i++) {
+            drawLine(300, 100 + i * 10, 300, 105 + i * 10, 'skyblue', 1)
+        }
+
+        function drawLine(x1, y1, x2, y2, color, width) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1)
+            ctx.lineTo(x2, y2)
+            ctx.lineWidth = width
+            ctx.strokeStyle = color
+            ctx.stroke()
+            ctx.closePath()
+        }
+    </script>
+</body>
+
+</html>

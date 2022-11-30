@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canv {
+            margin: 0 auto;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv" width="500px" height="500px">ie9以下的浏览器不兼容</canvas>
+    <script>
+        let canv = document.querySelector('#canv')
+        let ctx = canv.getContext('2d')
+            // 先填充再描边
+            // ctx.rect(100, 100, 150, 80)
+            // ctx.fillStyle = 'green'
+            // ctx.fill()
+            // ctx.strokeStyle = 'red'
+            // ctx.stroke()
+            // 画实心矩形
+            // ctx.fillRect(200, 200, 100, 50)
+            // 画空心矩形
+            // ctx.strokeRect(300, 300, 50, 20)
+
+        // 画随机统计图
+        ctx.beginPath()
+        ctx.moveTo(100, 100)
+        ctx.lineTo(100, 400)
+        ctx.lineTo(400, 400)
+        ctx.stroke()
+        ctx.closePath()
+        for (i = 0; i < 8; i++) {
+            // 颜色随机
+            ctx.fillStyle = '#' + parseInt((Math.random() * 0xffffff).toString()).toString(16)
+
+            // 法二
+            // ctx.fillStyle = `rgb(${parseInt(Math.random()*256).toString()},${parseInt(Math.random()*256).toString()},${parseInt(Math.random()*256).toString()})`
+
+            // 高度随机
+            let height = Math.random() * 250 + 10
+            ctx.fillRect(120 + i * 30, 400 - height, 20, height)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canv {
+            margin: 0 auto;
+            display: block;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canv" width="500px" height="500px">ie9以下的浏览器不兼容</canvas>
+    <script>
+        let canv = document.querySelector('#canv')
+        let ctx = canv.getContext('2d')
+        let w = h = 500
+        let x = y = 50
+        let r = 20
+        let xSpeed = 3
+        let ySpeed = 5
+            // drawCircle(x, y, r)
+        setInterval(() => {
+            ctx.clearRect(0, 0, w, h)
+            if (x - r <= 0 || x + r >= w) {
+                xSpeed = -xSpeed
+            }
+            x += xSpeed
+            if (y - r <= 0 || y + r >= h) {
+                ySpeed = -ySpeed
+            }
+            y += ySpeed
+            drawCircle(x, y, r)
+        }, 50)
+
+        function drawCircle(x, y, r) {
+            ctx.beginPath()
+            ctx.arc(x, y, r, 0, Math.PI * 2, false)
+            ctx.fillStyle = 'skyblue'
+            ctx.fill()
+        }
+    </script>
+</body>
+
+</html>
